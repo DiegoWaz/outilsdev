@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="utf-8">
+	<title>ESGI 3J : Inscription</title>
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+	<link href="css/icons/icomoon/styles.css" rel="stylesheet" type="text/css">
+	<link href="css/minified/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<link href="css/minified/core.min.css" rel="stylesheet" type="text/css">
+	<link href="css/minified/components.min.css" rel="stylesheet" type="text/css">
+	<link href="css/minified/colors.min.css" rel="stylesheet" type="text/css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	
+</head>
+
+<body>
+	<div class="navbar navbar-inverse">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="index.html">Diego Waziri</a>
+			<ul class="nav navbar-nav pull-right visible-xs-block">
+				<li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="page-container login-container">
+		<div class="page-content">
+			<div class="content-wrapper">
+				<div class="content">
+					<div class="row">
+						<div class="col-md-6">
+							<form action="/subscribe" method="POST">
+								<div class="panel panel-body login-form">
+									<div class="text-center">
+										<div class="icon-object border-success text-success"><i class="icon-plus3"></i></div>
+										<h5 class="content-group">Créer un compte</h5>
+									</div>
+
+									<div class="form-group has-feedback has-feedback-left">
+										<input type="text" name="nom" id="nom" class="form-control" placeholder="Nom">
+										<div class="form-control-feedback">
+											<i class="icon-user-check text-muted"></i>
+										</div>
+									</div>
+
+									<div class="form-group has-feedback has-feedback-left">
+										<input type="text" name="prenom" id="prenom" class="form-control" placeholder="Prenom">
+										<div class="form-control-feedback">
+											<i class="icon-user-check text-muted"></i>
+										</div>
+									</div> 
+
+									<div class="form-group has-feedback has-feedback-left">
+										<input type="number" name="age" id="age" class="form-control" placeholder="Age">
+										<div class="form-control-feedback">
+											<i class="icon-gift text-muted"></i>
+										</div>
+									</div>
+
+									<div class="form-group has-feedback has-feedback-left">
+										<input type="text" name="email" id="email" class="form-control" placeholder="E-mail">
+										<div class="form-control-feedback">
+											<i class="icon-mention text-muted"></i>
+										</div>
+									</div>
+
+									<button type="submit" class="btn bg-teal btn-block btn-lg">Inscription <i class="icon-circle-right2 position-right"></i></button>
+								</div>
+							</form>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="panel panel-flat">
+								<div class="panel-heading">
+									<h5 class="panel-title">Utilisateurs inscrits</h5>
+								</div>
+
+								<div class="panel-body">
+									<ul class="media-list">
+									<% for(row in data) { %>
+										<li class="media">
+											<div class="media-body">
+												<div class="media-heading text-semibold"><%= data[row].prenom %> <%= data[row].nom %></div>
+												<span class="text-muted"><%= data[row].age %> ans</span>
+												<span class="text-muted"><%= data[row].email %></span>
+											</div>
+
+											<div class="media-right media-middle">
+												<ul class="icons-list icons-list-extended text-nowrap">
+							                    	<li>
+							                    		<a href="edit/<%= data[row].id %>" title="Modifier"><i class="icon-pencil"></i></a>
+							                    	</li>
+							                    	<li>
+							                    		<button type="button" id="<%= data[row].id %>" name="delete" ><i class="icon-cross"></i></button>
+							                    	</li>
+						                    	</ul>
+											</div>
+										</li>
+									<% } %>
+
+									</ul>
+								</div>
+							</div>
+						</div>
+				</div>
+			</div>
+		</div>
+	</div>
+		<script type="text/javascript">
+		$(document).ready(function(){
+	    		$("[name=delete]").click(function(){
+
+	    			if(confirm("Voulez-vous vraiment supprimer cet utilisateur ?")){
+	    				document.location.href="delete/"+this.id;
+	    			}
+	    		})
+	    	});
+	</script>
+</body>
+</html>

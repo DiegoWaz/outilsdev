@@ -1,0 +1,10 @@
+{
+  "name": "projetdiego",
+  "version": "0.0.1",
+  "dependencies": {
+    "express": "~4.11.0",
+    "ejs": "~2.1.4",
+    "body-parser": "~1.15.1",
+    "cookie-session": "~2.0.0"
+  }
+}
