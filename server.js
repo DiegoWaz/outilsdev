@@ -69,7 +69,7 @@ app.get('/', function(req, res) {
 		if (prenom.length < 50) {
 			if (nom.length < 50) {
 				if (age < 5 && age > 100) {
-					res.write("Vous devez avoir entre 5 et 100 ans");
+					res.write("Vous devez avoir entre 5 et 99 ans");
 				} 	else {
 						mysql.setUser(req.body);
 						res.redirect('/home');
